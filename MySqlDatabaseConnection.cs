@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using System.Data.Common;
+using System.Data.Entity.Core.EntityClient;
+using System.Data.Entity.Core.Metadata.Edm;
+using System.Net;
 using MySql.Data.MySqlClient;
 
 namespace ProjectOrganization;
@@ -9,7 +12,7 @@ internal class MySqlDatabaseConnection : IDatabaseConnection
 
     public MySqlDatabaseConnection(IPAddress address, uint port, string userId, string password)
     {
-        var builder = new MySqlConnectionStringBuilder
+        MySqlConnectionStringBuilder mySqlConnectionBuilder = new() 
         {
             AllowBatch = false,
             Server = address.ToString(),
@@ -18,7 +21,8 @@ internal class MySqlDatabaseConnection : IDatabaseConnection
             Port = port,
             Database = "project_organization"
         };
-        connection = new MySqlConnection(builder.ToString());
+
+        connection = new MySqlConnection(mySqlConnectionBuilder.ToString());
         connection.Open();
     }
 
@@ -30,6 +34,11 @@ internal class MySqlDatabaseConnection : IDatabaseConnection
     public Table<TData> Get<TData>() where TData : class
     {
         return new Table<TData>(connection);
+    }
+
+    public MySqlConnection? AsMySqlConnection()
+    {
+        return connection;
     }
 
     public void Shutdown()

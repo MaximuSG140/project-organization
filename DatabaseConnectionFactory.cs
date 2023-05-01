@@ -5,13 +5,16 @@ namespace ProjectOrganization
     internal abstract class DatabaseConnectionFactory
     {
         private static DatabaseConnectionFactory? connectionFactory;
-        public static DatabaseConnectionFactory GetInstance()
+        public static DatabaseConnectionFactory Instance
         {
-            if (connectionFactory == null)
+            get
             {
-                throw new NullReferenceException();
+                if (connectionFactory == null)
+                {
+                    throw new NullReferenceException();
+                }
+                return connectionFactory;
             }
-            return connectionFactory;
         }
 
         protected static void SetFactory(DatabaseConnectionFactory factory)
@@ -20,7 +23,7 @@ namespace ProjectOrganization
             connectionFactory = factory;
         }
         public abstract void CreateDatabaseConnection(IPAddress address, uint port, string userId, string password);
-        public abstract IDatabaseConnection GetDatabaseConnection();
+        public abstract IDatabaseConnection DatabaseConnection { get; }
 
         public abstract void ShutdownConnection();
     }

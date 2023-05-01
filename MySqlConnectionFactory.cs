@@ -24,15 +24,19 @@ namespace ProjectOrganization
             connection = new MySqlDatabaseConnection(address, port, userId, password);
         }
 
-        public override IDatabaseConnection GetDatabaseConnection()
+        public override IDatabaseConnection DatabaseConnection
         {
-            if (connection == null)
+            get
             {
-                throw new InvalidOperationException();
-            }
+                if (connection == null)
+                {
+                    throw new InvalidOperationException();
+                }
 
-            return connection;
+                return connection;
+            }
         }
+
         public override void ShutdownConnection()
         {
             connection?.Shutdown();

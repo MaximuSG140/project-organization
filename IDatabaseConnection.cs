@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 
 namespace ProjectOrganization
 {
@@ -22,7 +24,7 @@ namespace ProjectOrganization
         public int Age { get; set; }
 
         [Column("title_id")]
-        public int TitleId;
+        public int TitleId { get; set; }
     }
 
     [Table("project_data")]
@@ -34,10 +36,10 @@ namespace ProjectOrganization
 
         public string Name { get; set; }
         [Column("begin")]
-        public DateOnly Begin { get; set; }
+        public DateTime Begin { get; set; }
 
         [Column("end")]
-        public DateOnly End { get; set; }
+        public DateTime End { get; set; }
 
         [Column("cost")]
         public int Cost { get; set; }
@@ -63,10 +65,10 @@ namespace ProjectOrganization
         public int Id { get; set; }
 
         [Column("begin")]
-        public DateOnly Begin { get; set; }
+        public DateTime Begin { get; set; }
 
         [Column("end")]
-        public DateOnly End { get; set; }
+        public DateTime End { get; set; }
 
         [Column("leader_id")]
         public int LeaderId { get; set; }
@@ -231,6 +233,9 @@ namespace ProjectOrganization
     internal interface IDatabaseConnection
     {
         Table<TData> Get<TData>() where TData : class;
+
+        MySqlConnection? AsMySqlConnection();
+        
         void Shutdown();
     }
 }

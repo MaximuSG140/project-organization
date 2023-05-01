@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="MainMenu.cs">
+    <Compile Update="AskForQueryParameterValueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ExecutePredefinedQueriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="TableViewForm.cs">

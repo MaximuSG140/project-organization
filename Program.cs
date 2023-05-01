@@ -7,7 +7,7 @@ namespace ProjectOrganization
         {
             Environment.Instance.SetUp();
             ApplicationConfiguration.Initialize();
-            Application.Run(new StartMenuForm());
+            Application.Run(StartMenuForm.Instance);
             Environment.Instance.TearDown();
         }
     }
