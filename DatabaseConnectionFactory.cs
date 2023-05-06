@@ -11,7 +11,7 @@ namespace ProjectOrganization
             {
                 if (connectionFactory == null)
                 {
-                    throw new NullReferenceException();
+                    throw new InvalidOperationException("Database not created yet.");
                 }
                 return connectionFactory;
             }

@@ -1,7 +1,10 @@
-﻿namespace ProjectOrganization
+﻿using Microsoft.Extensions.Logging;
+
+namespace ProjectOrganization
 {
     internal class TableDataManager<TEntity> : ITableDataViewManager where TEntity : class, new()
     {
+        private static Logger<TableDataManager<TEntity>> logger = new(LoggerFactory.Create(builder => { }));
         private DataGridView view = null!;
         private List<TEntity> tableData = null!;
 
@@ -47,7 +50,6 @@
             var oldValue = tableData[e.RowIndex];
             TEntity copy = new();
             TableInfoParser<TEntity>.Assign(oldValue, copy);
-
             try
             {
                 var update = table.Rows.Update(oldValue);
@@ -56,7 +58,8 @@
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+                logger.LogCritical(exception.Message);
+                MessageBox.Show("Error editing table", "Error", MessageBoxButtons.OK);
                 var column = modifiedCell.OwningColumn;
                 var property = TableInfoParser<TEntity>.GetPropertyByName(column.Name.ToCamelCase());
                 modifiedCell.Value = property.GetValue(copy);
@@ -78,7 +81,8 @@
             }
             catch(Exception exception)
             {
-                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+                logger.LogCritical(exception.Message);
+                MessageBox.Show("Error adding data to table", "Error", MessageBoxButtons.OK);
                 return;
             }
             tableData.Add((TEntity)data);
@@ -102,7 +106,8 @@
             }
             catch (Exception exception)
             {
-                MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+                logger.LogCritical(exception.Message);
+                MessageBox.Show("Error removing row", "Error", MessageBoxButtons.OK);
                 return;
             }
             tableData.RemoveAt(index);

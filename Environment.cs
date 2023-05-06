@@ -20,7 +20,7 @@ namespace ProjectOrganization
 
         public void TearDown()
         {
-            DatabaseConnectionFactory.            Instance.ShutdownConnection();
+            DatabaseConnectionFactory.Instance.ShutdownConnection();
         }
     }
 }

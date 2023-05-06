@@ -28,84 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableSelectorListBox = new ListBox();
-            tableDataView = new DataGridView();
-            entityPropertiesRedactor = new PropertyGrid();
-            addRecordButton = new Button();
-            removeSelectedRowButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)tableDataView).BeginInit();
-            SuspendLayout();
+            this.tableSelectorListBox = new System.Windows.Forms.ListBox();
+            this.tableDataView = new System.Windows.Forms.DataGridView();
+            this.entityPropertiesRedactor = new System.Windows.Forms.PropertyGrid();
+            this.addRecordButton = new System.Windows.Forms.Button();
+            this.removeSelectedRowButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.tableDataView)).BeginInit();
+            this.SuspendLayout();
             // 
             // tableSelectorListBox
             // 
-            tableSelectorListBox.FormattingEnabled = true;
-            tableSelectorListBox.ItemHeight = 15;
-            tableSelectorListBox.Location = new Point(12, 21);
-            tableSelectorListBox.Margin = new Padding(3, 2, 3, 2);
-            tableSelectorListBox.Name = "tableSelectorListBox";
-            tableSelectorListBox.Size = new Size(228, 289);
-            tableSelectorListBox.TabIndex = 0;
-            tableSelectorListBox.SelectedIndexChanged += tableSelectorListBox_SelectedIndexChanged;
+            this.tableSelectorListBox.FormattingEnabled = true;
+            this.tableSelectorListBox.ItemHeight = 20;
+            this.tableSelectorListBox.Location = new System.Drawing.Point(14, 28);
+            this.tableSelectorListBox.Name = "tableSelectorListBox";
+            this.tableSelectorListBox.Size = new System.Drawing.Size(260, 364);
+            this.tableSelectorListBox.TabIndex = 0;
+            this.tableSelectorListBox.SelectedIndexChanged += new System.EventHandler(this.tableSelectorListBox_SelectedIndexChanged);
             // 
             // tableDataView
             // 
-            tableDataView.AllowUserToAddRows = false;
-            tableDataView.AllowUserToDeleteRows = false;
-            tableDataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tableDataView.Location = new Point(245, 22);
-            tableDataView.Margin = new Padding(3, 2, 3, 2);
-            tableDataView.Name = "tableDataView";
-            tableDataView.RowHeadersWidth = 51;
-            tableDataView.RowTemplate.Height = 29;
-            tableDataView.Size = new Size(664, 393);
-            tableDataView.TabIndex = 1;
+            this.tableDataView.AllowUserToAddRows = false;
+            this.tableDataView.AllowUserToDeleteRows = false;
+            this.tableDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableDataView.Location = new System.Drawing.Point(280, 29);
+            this.tableDataView.Name = "tableDataView";
+            this.tableDataView.RowHeadersWidth = 51;
+            this.tableDataView.RowTemplate.Height = 29;
+            this.tableDataView.Size = new System.Drawing.Size(759, 483);
+            this.tableDataView.TabIndex = 1;
             // 
             // entityPropertiesRedactor
             // 
-            entityPropertiesRedactor.Location = new Point(915, 21);
-            entityPropertiesRedactor.Name = "entityPropertiesRedactor";
-            entityPropertiesRedactor.Size = new Size(241, 293);
-            entityPropertiesRedactor.TabIndex = 2;
+            this.entityPropertiesRedactor.Location = new System.Drawing.Point(1046, 28);
+            this.entityPropertiesRedactor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.entityPropertiesRedactor.Name = "entityPropertiesRedactor";
+            this.entityPropertiesRedactor.Size = new System.Drawing.Size(275, 364);
+            this.entityPropertiesRedactor.TabIndex = 2;
             // 
             // addRecordButton
             // 
-            addRecordButton.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            addRecordButton.Location = new Point(915, 320);
-            addRecordButton.Name = "addRecordButton";
-            addRecordButton.Size = new Size(241, 95);
-            addRecordButton.TabIndex = 3;
-            addRecordButton.Text = "Add record";
-            addRecordButton.UseVisualStyleBackColor = true;
-            addRecordButton.Click += addRecordButton_Click;
+            this.addRecordButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addRecordButton.Location = new System.Drawing.Point(1046, 399);
+            this.addRecordButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addRecordButton.Name = "addRecordButton";
+            this.addRecordButton.Size = new System.Drawing.Size(275, 113);
+            this.addRecordButton.TabIndex = 3;
+            this.addRecordButton.Text = "Add record";
+            this.addRecordButton.UseVisualStyleBackColor = true;
+            this.addRecordButton.Click += new System.EventHandler(this.addRecordButton_Click);
             // 
             // removeSelectedRowButton
             // 
-            removeSelectedRowButton.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            removeSelectedRowButton.Location = new Point(12, 320);
-            removeSelectedRowButton.Name = "removeSelectedRowButton";
-            removeSelectedRowButton.Size = new Size(228, 95);
-            removeSelectedRowButton.TabIndex = 4;
-            removeSelectedRowButton.Text = "Remove selected";
-            removeSelectedRowButton.UseVisualStyleBackColor = true;
-            removeSelectedRowButton.Click += removeSelectedRowButton_Click;
+            this.removeSelectedRowButton.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.removeSelectedRowButton.Location = new System.Drawing.Point(14, 399);
+            this.removeSelectedRowButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.removeSelectedRowButton.Name = "removeSelectedRowButton";
+            this.removeSelectedRowButton.Size = new System.Drawing.Size(261, 113);
+            this.removeSelectedRowButton.TabIndex = 4;
+            this.removeSelectedRowButton.Text = "Remove selected";
+            this.removeSelectedRowButton.UseVisualStyleBackColor = true;
+            this.removeSelectedRowButton.Click += new System.EventHandler(this.removeSelectedRowButton_Click);
             // 
             // TableViewForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1168, 429);
-            Controls.Add(removeSelectedRowButton);
-            Controls.Add(addRecordButton);
-            Controls.Add(entityPropertiesRedactor);
-            Controls.Add(tableDataView);
-            Controls.Add(tableSelectorListBox);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "TableViewForm";
-            Text = "TableViewForm";
-            FormClosed += TableViewForm_FormClosed;
-            Load += TableViewForm_Load;
-            ((System.ComponentModel.ISupportInitialize)tableDataView).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1335, 522);
+            this.Controls.Add(this.removeSelectedRowButton);
+            this.Controls.Add(this.addRecordButton);
+            this.Controls.Add(this.entityPropertiesRedactor);
+            this.Controls.Add(this.tableDataView);
+            this.Controls.Add(this.tableSelectorListBox);
+            this.Name = "TableViewForm";
+            this.Text = "TableViewForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TableViewForm_FormClosed);
+            this.Load += new System.EventHandler(this.TableViewForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tableDataView)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion

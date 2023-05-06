@@ -1,9 +1,12 @@
 using System.Net;
+using Microsoft.Extensions.Logging;
 
 namespace ProjectOrganization;
 
 public partial class StartMenuForm : Form
 {
+
+    private readonly Logger<StartMenuForm> logger = new(LoggerFactory.Create(builder => { }));
     public static StartMenuForm Instance
     {
         get; private set;
@@ -22,7 +25,8 @@ public partial class StartMenuForm : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            logger.LogCritical(ex.Message);
+            MessageBox.Show("Error connecting database", "Error", MessageBoxButtons.OK);
             return;
         }
 
@@ -45,7 +49,8 @@ public partial class StartMenuForm : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            logger.LogCritical(ex.Message);
+            MessageBox.Show("Error connecting database", "Error", MessageBoxButtons.OK);
             return;
         }
 

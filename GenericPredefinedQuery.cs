@@ -2,11 +2,15 @@
 using System.Data.Common;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.Entity.Core.Metadata.Edm;
+using Microsoft.Extensions.Logging;
+using Microsoft.VisualBasic.Logging;
 
 namespace ProjectOrganization;
 
 internal class GenericPredefinedQuery : PredefinedQuery
 {
+    private readonly Logger<GenericPredefinedQuery> logger = 
+        new(LoggerFactory.Create(builder => { }));
     public class Parameters
     {
         public string Command
@@ -26,11 +30,11 @@ internal class GenericPredefinedQuery : PredefinedQuery
     }
 
     private DataGridView view = null!;
-    private Parameters parameters;
+    private readonly Parameters parameters;
     private MySqlCommand command = null!;
     private int currentParameterIndex = 0;
     private AskForQueryParameterValueForm? parameterInputForm;
-    bool isCanceled = false;
+    private bool isCanceled = false;
 
     public string Description => parameters.Description;
 
@@ -80,7 +84,8 @@ internal class GenericPredefinedQuery : PredefinedQuery
         }
         catch (Exception exception)
         {
-            MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+            logger.LogCritical(exception.Message);
+            MessageBox.Show("Error executing query", "Error", MessageBoxButtons.OK);
             return;
         }
         for (int i = 0; i < reader.FieldCount; i++)
@@ -99,7 +104,7 @@ internal class GenericPredefinedQuery : PredefinedQuery
             var row = (DbDataRecord)rowUntyped;
             var index = view.Rows.Add();
             var addedRow = view.Rows[index];
-            for (int i = 0; i < row.FieldCount; i++)
+            for (var i = 0; i < row.FieldCount; i++)
             {
                 var fieldName = row.GetName(i);
                 var value = row.GetValue(i);

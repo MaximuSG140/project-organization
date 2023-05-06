@@ -29,7 +29,7 @@ public partial class TableViewForm : Form
     }
 
     public static readonly Dictionary<string, Type> EntityTypeByTableName =
-        TableNames.ToDictionary(table_name => table_name, table_name => GetTypeByName(table_name.ToCamelCase())!);
+        TableNames.ToDictionary(tableName => tableName, tableName => GetTypeByName(tableName.ToCamelCase())!);
 
     private object? currentEntityForInsert;
 
